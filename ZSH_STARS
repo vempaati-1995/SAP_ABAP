@@ -1,0 +1,43 @@
+*&---------------------------------------------------------------------*
+*& Report  ZSH_STARS
+*&
+*&---------------------------------------------------------------------*
+*&
+*&
+*&---------------------------------------------------------------------*
+
+REPORT zsh_stars.
+
+PARAMETERS: p_num TYPE i.
+
+DATA: p_res TYPE string.
+
+WRITE:/ 'code 1 result:'.
+
+SKIP.
+
+DO p_num TIMES.
+
+  CONCATENATE p_res '*' INTO p_res.
+
+  WRITE:/ p_res.
+
+ENDDO.
+
+SKIP 2.
+
+WRITE:/ 'code 2 result:'.
+
+SKIP.
+
+DO p_num TIMES.   " Outer loop for rows
+
+  DO p_num TIMES. " Inner loop for columns
+
+    WRITE:'*'.
+
+  ENDDO.
+
+  WRITE:/.
+
+ENDDO.
