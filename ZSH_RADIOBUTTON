@@ -1,0 +1,45 @@
+*&---------------------------------------------------------------------*
+*& Report  ZSH_RADIOBUTTON
+*&
+*&---------------------------------------------------------------------*
+*&
+*&
+*&---------------------------------------------------------------------*
+
+REPORT zsh_radiobutton.
+
+PARAMETERS: p_num1 TYPE i,
+            p_num2 TYPE i.
+
+DATA: p_result TYPE i.
+
+SELECTION-SCREEN SKIP 1.
+
+SELECTION-SCREEN BEGIN OF LINE.
+SELECTION-SCREEN COMMENT 1(70) text-001.
+SELECTION-SCREEN END OF LINE.
+
+SELECTION-SCREEN SKIP 1.
+
+PARAMETERS: r1 RADIOBUTTON GROUP g1,
+            r2 RADIOBUTTON GROUP g1,
+            r3 RADIOBUTTON GROUP g1,
+            r4 RADIOBUTTON GROUP g1.
+
+IF r1 = 'X'.
+  p_result = p_num1 + p_num2.
+  WRITE:/ 'Addition of two given numbers is',p_result.
+
+ELSEIF r2 = 'X'.
+  p_result = p_num1 - p_num2.
+  WRITE:/ 'Subtraction of two given numbers is',p_result.
+
+ELSEIF r3 = 'X'.
+  p_result = p_num1 * p_num2.
+  WRITE:/ 'Multiplication of two given numbers is',p_result.
+
+ELSE.
+  p_result = p_num1 / p_num2.
+  WRITE:/ 'Division of two given numbers is',p_result.
+
+ENDIF.
