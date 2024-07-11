@@ -1,0 +1,46 @@
+*&---------------------------------------------------------------------*
+*& Report  ZSH_INTERNAL_TABLE
+*&
+*&---------------------------------------------------------------------*
+*&
+*&
+*&---------------------------------------------------------------------*
+
+REPORT zsh_internal_table.
+
+TYPES: BEGIN OF ty_emp,
+       name TYPE c LENGTH 20,
+       id TYPE n LENGTH 4,
+       dep TYPE c LENGTH 20,
+       sal TYPE i,
+       END OF ty_emp.
+
+DATA: gt_emp TYPE TABLE OF ty_emp,
+      gw_emp TYPE ty_emp.
+
+gw_emp-name = 'Raj'.
+gw_emp-id = 7841.
+gw_emp-dep = 'Development'.
+gw_emp-sal = 25000.
+
+APPEND gw_emp TO gt_emp.
+
+gw_emp-name = 'Ram'.
+gw_emp-id = 7845.
+gw_emp-dep = 'Testing'.
+gw_emp-sal = 30000.
+
+APPEND gw_emp TO gt_emp.
+
+gw_emp-name = 'Rakesh'.
+gw_emp-id = 7848.
+gw_emp-dep = 'Devops'.
+gw_emp-sal = 50000.
+
+APPEND gw_emp TO gt_emp.
+
+LOOP AT gt_emp INTO gw_emp WHERE sal > 25000.
+
+  WRITE:/ gw_emp-name,gw_emp-id,gw_emp-dep,gw_emp-sal.
+
+ENDLOOP.
